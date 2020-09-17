@@ -44,7 +44,7 @@ export default {
   mounted() {
     console.log(process.env.VUE_APP_ROOT_API);
     http
-      .get("/categorias")
+      .get("/categories")
       .then(result => console.log(result), error => console.log(error));
 
   },
