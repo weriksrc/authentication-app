@@ -92,16 +92,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import http from "@/services/http";
-
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-}
-=======
   export default {
     name: 'HelloWorld',
 
@@ -158,6 +148,5 @@ export default {
       ],
     }),
   }
->>>>>>> a7adea254fcb4cb56c9a9b2cb793fb165e8d612b
 </script>
 
