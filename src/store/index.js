@@ -1,15 +1,39 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+import login from '@/services/login';
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    token: '' || localStorage.getItem('token')
   },
   mutations: {
+    setToken(state, token) {
+      state.token = token;
+      localStorage.setItem('token', token);
+    }
   },
   actions: {
+    tryLogin({ commit }, payload) {
+      console.log('tryLogin with ', payload.email, 'and', payload.password);
+      return login.tryLogin(payload.email, payload.password).then(
+        result => {
+          commit('setToken', result.data.token);
+        }
+      );
+    },
+    logout({ commit }) {
+      commit('setToken', '');
+    }
   },
-  modules: {
+  getters: {
+    isLogged: state => {
+      return state.token != '';
+    },
+    getToken: state => {
+      return state.token;
+    }
   }
-})
+});
