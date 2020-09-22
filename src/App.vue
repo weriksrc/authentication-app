@@ -1,12 +1,42 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <v-list>
+        <v-list-tile
+          value="true"
+          v-for="(item, i) in itens"
+          :key="i"
+          :to="item.to"
+        >
+        </v-list-tile>
+      </v-list>
+      <router-link to="/"></router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data(){
+    return{
+      clipped: false,
+      drawer: true,
+      fixed: false,
+      items:[{
+        icon: 'mdi-home',
+        title: 'Home',
+        to: "/"
+      }],
+      miniVariant: false,
+      rigth: true,
+      rigthDrawer: false,
+      title: 'Vuetify.js'
+    }
+  }
+}
+</script>
 
 <style>
 #app {
